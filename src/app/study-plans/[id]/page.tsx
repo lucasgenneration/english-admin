@@ -11,6 +11,8 @@ import toast from 'react-hot-toast';
 import { ArrowLeft, Plus, Edit, Trash2, Folder, ChevronRight, Clock, ChevronUp, ChevronDown } from 'lucide-react';
 import { use } from 'react';
 
+export const runtime = 'edge';
+
 export default function StudyPlanDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const { id } = use(params);

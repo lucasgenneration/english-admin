@@ -11,6 +11,8 @@ import toast from 'react-hot-toast';
 import { ArrowLeft, Save, FileVideo, FileText, Headphones } from 'lucide-react';
 import { use } from 'react';
 
+export const runtime = 'edge';
+
 export default function NewContentPage({ 
   params 
 }: { 

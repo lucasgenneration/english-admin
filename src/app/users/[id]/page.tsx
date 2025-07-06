@@ -22,6 +22,8 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
+export const runtime = 'edge';
+
 export default function UserDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const router = useRouter();

@@ -11,6 +11,8 @@ import toast from 'react-hot-toast';
 import { ArrowLeft, Save } from 'lucide-react';
 import { use } from 'react';
 
+export const runtime = 'edge';
+
 const ICON_OPTIONS = [
   'book', 'briefcase', 'plane', 'tv', 'music', 'star', 'heart', 'flag'
 ];

@@ -11,6 +11,8 @@ import toast from 'react-hot-toast';
 import { ArrowLeft, Save } from 'lucide-react';
 import { use } from 'react';
 
+export const runtime = 'edge';
+
 export default function NewSubfolderPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const { id: folderId } = use(params);

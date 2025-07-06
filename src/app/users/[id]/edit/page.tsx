@@ -9,6 +9,8 @@ import type { User } from '@/types/user';
 import { ArrowLeft, Save, Plus, Minus } from 'lucide-react';
 import Link from 'next/link';
 
+export const runtime = 'edge';
+
 export default function UserEditPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const router = useRouter();
