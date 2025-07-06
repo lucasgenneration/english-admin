@@ -23,6 +23,7 @@ export interface StudySubfolder {
   order: number;
   parentId: string; // ID da folder principal
   totalItems: number;
+  completedItems?: number;
   createdAt?: Date;
   updatedAt?: Date;
 }

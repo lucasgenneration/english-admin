@@ -106,7 +106,7 @@ export const studyFolderService = {
         createdAt: subDoc.data().createdAt?.toDate(),
         updatedAt: subDoc.data().updatedAt?.toDate(),
       }))
-      .sort((a, b) => (a.order || 0) - (b.order || 0)) as StudySubfolder[];
+      .sort((a: any, b: any) => (a.order || 0) - (b.order || 0)) as StudySubfolder[];
     
     return folder;
   },
@@ -190,7 +190,7 @@ export const studySubfolderService = {
         createdAt: doc.data().createdAt?.toDate(),
         updatedAt: doc.data().updatedAt?.toDate(),
       }))
-      .sort((a, b) => (a.order || 0) - (b.order || 0)) as StudySubfolder[];
+      .sort((a: any, b: any) => (a.order || 0) - (b.order || 0)) as StudySubfolder[];
   },
 
   async getById(id: string): Promise<StudySubfolder | null> {
