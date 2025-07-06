@@ -145,16 +145,52 @@ O admin panel se integra perfeitamente com o aplicativo Flutter:
 4. **Reordenação** mantém a ordem no app
 5. **Estatísticas** são calculadas em tempo real
 
-## 🚀 Deploy
+## 🚀 Deploy no Cloudflare Pages
 
-O projeto está configurado para deploy no Vercel:
+### Passo 1: Configurar no Cloudflare Dashboard
+
+1. Acesse [Cloudflare Pages](https://pages.cloudflare.com)
+2. Clique em "Create a project"
+3. Conecte sua conta do GitHub
+4. Selecione o repositório `english-admin`
+5. Configure as seguintes opções:
+   - **Framework preset**: Next.js
+   - **Build command**: `npm run pages:deploy`
+   - **Build output directory**: `.vercel/output/static`
+   - **Environment variables**: Adicione todas as variáveis do `.env.example`
+
+### Passo 2: Variáveis de Ambiente no Cloudflare
+
+No dashboard do Cloudflare Pages, vá em Settings > Environment variables e adicione:
+
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=seu_valor_aqui
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=seu_valor_aqui
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=seu_valor_aqui
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=seu_valor_aqui
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=seu_valor_aqui
+NEXT_PUBLIC_FIREBASE_APP_ID=seu_valor_aqui
+FIREBASE_PROJECT_ID=seu_valor_aqui
+FIREBASE_CLIENT_EMAIL=seu_valor_aqui
+FIREBASE_PRIVATE_KEY=sua_chave_privada_aqui
+```
+
+**Importante**: Para `FIREBASE_PRIVATE_KEY`, certifique-se de incluir as quebras de linha `\n` corretamente.
+
+### Passo 3: Configurar Domínio Customizado
+
+1. No dashboard do projeto, vá em "Custom domains"
+2. Adicione `english.genneration.group`
+3. Siga as instruções para configurar o DNS
+
+### Build Local para Teste
 
 ```bash
-# Build de produção
-npm run build
+# Testar build do Cloudflare localmente
+npm run pages:deploy
 
-# Preview local da build
-npm run start
+# Executar em modo dev com Cloudflare
+npm run pages:dev
 ```
 
 ## 🤝 Contribuindo
