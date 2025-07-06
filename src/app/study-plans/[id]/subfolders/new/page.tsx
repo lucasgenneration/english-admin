@@ -67,7 +67,6 @@ export default function NewSubfolderPage({ params }: { params: Promise<{ id: str
         parentId: folderId,
         order: subfolder.order || 1,
         totalItems: 0,
-        completedItems: 0,
       };
       
       const newSubfolderId = await studySubfolderService.create(subfolderData);
