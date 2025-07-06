@@ -47,13 +47,20 @@ export const studyFolderService = {
       const subfoldersSnapshot = await getDocs(subfoldersQuery);
       
       folder.subfolders = subfoldersSnapshot.docs
-        .map(subDoc => ({
-          id: subDoc.id,
-          ...subDoc.data(),
-          createdAt: subDoc.data().createdAt?.toDate(),
-          updatedAt: subDoc.data().updatedAt?.toDate(),
-        }))
-        .sort((a, b) => (a.order || 0) - (b.order || 0)) as StudySubfolder[];
+        .map(subDoc => {
+          const data = subDoc.data();
+          return {
+            id: subDoc.id,
+            name: data.name,
+            description: data.description,
+            order: data.order || 0,
+            parentId: data.parentId,
+            totalItems: data.totalItems || 0,
+            createdAt: data.createdAt?.toDate(),
+            updatedAt: data.updatedAt?.toDate(),
+          } as StudySubfolder;
+        })
+        .sort((a, b) => (a.order || 0) - (b.order || 0));
       
       folders.push(folder);
     }
