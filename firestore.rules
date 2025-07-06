@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Função auxiliar para verificar se o usuário é admin
+    function isAdmin() {
+      return request.auth != null && 
+        request.auth.uid != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+    
+    // Regras para a coleção de usuários
+    match /users/{userId} {
+      // Usuários podem ler seus próprios dados
+      allow read: if request.auth != null && request.auth.uid == userId;
+      
+      // Admins podem ler, atualizar e deletar qualquer usuário
+      allow read, update, delete: if isAdmin();
+      
+      // Usuários podem atualizar seus próprios dados (exceto isAdmin)
+      allow update: if request.auth != null && 
+        request.auth.uid == userId &&
+        (!request.resource.data.keys().hasAny(['isAdmin']) || 
+         request.resource.data.isAdmin == resource.data.isAdmin);
+      
+      // Criação de novos usuários é permitida durante o registro
+      allow create: if request.auth != null && request.auth.uid == userId;
+      
+      // Subcoleção completedContents
+      match /completedContents/{contentId} {
+        allow read, write: if request.auth != null && 
+          (request.auth.uid == userId || isAdmin());
+      }
+    }
+    
+    // Regras para Study Plans (já existentes)
+    match /studyFolders/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    
+    match /studySubfolders/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    
+    match /studyContents/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    
+    // Regras para outras coleções que possam existir
+    match /{document=**} {
+      // Por padrão, apenas admins podem escrever
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+  }
+}

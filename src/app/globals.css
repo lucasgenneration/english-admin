@@ -24,3 +24,57 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Fix placeholder text contrast */
+::placeholder {
+  color: #6b7280 !important;
+  opacity: 1 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280 !important;
+  opacity: 1 !important;
+}
+
+/* Fix input text color */
+input,
+textarea,
+select {
+  color: #111827 !important; /* gray-900 */
+}
+
+/* Fix disabled inputs */
+input:disabled,
+textarea:disabled,
+select:disabled {
+  color: #6b7280 !important; /* gray-500 */
+  background-color: #f9fafb !important; /* gray-50 */
+}
+
+/* Fix text contrast globally */
+.text-gray-500 {
+  color: #6b7280 !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.text-gray-700 {
+  color: #374151 !important;
+}
+
+.text-gray-900 {
+  color: #111827 !important;
+}
+
+/* Ensure spans and divs have proper contrast */
+span, div, p {
+  color: #111827; /* gray-900 by default */
+}
+
+/* Fix light text that should be darker */
+.font-medium {
+  color: #111827 !important;
+}
