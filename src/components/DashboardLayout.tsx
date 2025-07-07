@@ -7,6 +7,7 @@ import {
   Home, 
   Users, 
   BookOpen, 
+  Brain,
   LogOut,
   Menu,
   X
@@ -17,6 +18,7 @@ const menuItems = [
   { name: 'Dashboard', href: '/', icon: Home },
   { name: 'Usuários', href: '/users', icon: Users },
   { name: 'Study Plans', href: '/study-plans', icon: BookOpen },
+  { name: 'Vocabulary Challenge', href: '/vocabulary', icon: Brain },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {

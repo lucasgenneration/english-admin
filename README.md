@@ -39,6 +39,15 @@ Este é o sistema administrativo completo para gerenciar usuários, conteúdo e 
 - **Controle de conteúdo premium**
 - **Progress tracking** automático
 
+### 🎯 Gerenciamento de Vocabulary Challenge
+- **Sistema completo de CRUD** para desafios de vocabulário
+- **Categorias temáticas** com 10 opções pré-definidas
+- **Biblioteca de ícones** com 75+ opções organizadas por categorias
+- **Gestão de perguntas** com 4 opções de resposta
+- **Busca e filtros** para navegação eficiente
+- **Compatibilidade com Next.js 15** (Promise-based params)
+- **Exibição padronizada** com título em inglês primeiro, português segundo
+
 ### 🔐 Sistema de Autenticação
 - Login apenas para administradores (isAdmin: true)
 - Proteção de todas as rotas administrativas
@@ -49,6 +58,8 @@ Este é o sistema administrativo completo para gerenciar usuários, conteúdo e 
 - Total de usuários e usuários ativos
 - Total de conteúdos de estudo
 - Conteúdos completados pelos usuários
+- Estatísticas de Vocabulary Challenge
+- Categorias e perguntas cadastradas
 
 ## 🛠️ Instalação
 
@@ -103,6 +114,10 @@ src/
 │   │   ├── new/             # Criar nova pasta
 │   │   ├── [id]/            # Subpastas
 │   │   └── [id]/[subId]/    # Conteúdos
+│   ├── vocabulary/          # Gerenciamento de Vocabulary Challenge
+│   │   ├── page.tsx         # Listagem de categorias
+│   │   ├── new/             # Criar nova categoria
+│   │   └── [id]/            # Gerenciar perguntas
 │   ├── layout.tsx           # Layout raiz
 │   ├── page.tsx             # Dashboard
 │   └── globals.css          # Estilos globais
@@ -114,13 +129,16 @@ src/
 │   └── AuthContext.tsx      # Contexto de autenticação
 ├── lib/
 │   ├── firebase.ts          # Configuração Firebase Client
-│   └── firebase-admin.ts    # Configuração Firebase Admin
+│   ├── firebase-admin.ts    # Configuração Firebase Admin
+│   └── icons.ts             # Biblioteca de ícones (75+ opções)
 ├── services/
 │   ├── userService.ts       # Operações de usuários
-│   └── studyContentService.ts # Operações de conteúdo
+│   ├── studyContentService.ts # Operações de conteúdo
+│   └── vocabularyService.ts # Operações de Vocabulary Challenge
 └── types/
     ├── user.ts              # Tipos de usuário
-    └── study-content.ts     # Tipos de conteúdo
+    ├── study-content.ts     # Tipos de conteúdo
+    └── vocabulary.ts        # Tipos de Vocabulary Challenge
 ```
 
 ## 🎨 UI/UX Features
@@ -144,6 +162,8 @@ O admin panel se integra perfeitamente com o aplicativo Flutter:
 3. **Status premium** controla acesso no app
 4. **Reordenação** mantém a ordem no app
 5. **Estatísticas** são calculadas em tempo real
+6. **Vocabulary Challenge** sincroniza categorias e perguntas
+7. **Ícones customizados** são aplicados automaticamente
 
 ## 🚀 Deploy no Cloudflare Pages
 
@@ -196,6 +216,18 @@ npm run pages:dev
 ## 🤝 Contribuindo
 
 Este é um projeto privado. Para contribuir, entre em contato com a equipe de desenvolvimento.
+
+## 📋 Changelog Recente
+
+### v1.3.0 (07/07/2025)
+- **🎯 Vocabulary Challenge CRUD**: Sistema completo de gerenciamento
+- **🔧 Next.js 15 Compatibility**: Correção de params Promise-based
+- **🔍 Sistema de Busca**: Filtros para categorias de vocabulário
+- **🎨 Biblioteca de Ícones**: 75+ ícones organizados por categorias
+- **📝 Gestão de Perguntas**: Interface completa para criar/editar perguntas
+- **🌐 Padronização**: Títulos em inglês primeiro, português segundo
+- **🔄 Fixes de Layout**: Correções de SafeArea e AppBar transparente
+- **⚡ Otimizações**: Melhor handling de contexto em diálogos
 
 ## 📄 Licença
 
